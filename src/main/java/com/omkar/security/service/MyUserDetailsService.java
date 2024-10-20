@@ -31,6 +31,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
         String authoritiesString = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)  // Extract the authority string from each GrantedAuthority
+                .map(authority -> authority.replace("ROLE_", ""))
                 .collect(Collectors.joining("::"));   // Join with your defined delimiter
 
 
